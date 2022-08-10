@@ -1,0 +1,50 @@
+//-------------------PRIMERO
+SELECT ID_MaterialConstruccion AS ID,
+Nombre_Material AS NOMBRE,
+Precio_Unidad AS PRECIO
+FROM MaterialConstruccion
+WHERE importado = "Si"
+ORDER BY Nombre_Material;
+
+//-------------------SEGUNDO
+SELECT Proyecto.ID_Proyecto AS ID,
+Proyecto.Constructora,
+Proyecto.Ciudad,
+Proyecto.Clasificacion,
+Tipo.Estrato,
+Lider.Nombre || " " || Primer_Apellido || " " || Segundo_Apellido AS LIDER 
+FROM Proyecto 
+JOIN Tipo ON Proyecto.ID_Tipo = Tipo.ID_Tipo
+JOIN Lider ON Proyecto.ID_Lider = Lider.ID_Lider
+WHERE Banco_Vinculado = "Conavi"
+ORDER BY Fecha_Inicio DESC, Ciudad, Constructora;
+
+//-------------------TERCERO
+SELECT Ciudad, Clasificacion, COUNT(*)AS TOTAL,
+MIN(Fecha_Inicio) AS VIEJO, MAX(Fecha_Inicio) AS RECIENTE
+FROM Proyecto
+WHERE Clasificacion NOT IN('Casa Campestre', 'Condominio')
+GROUP BY ciudad, Clasificacion
+ORDER BY Ciudad, Clasificacion;
+
+//-------------------CUARTO
+SELECT Proyecto.ID_Proyecto, SUM(CAntidad * Precio_Unidad) AS VALOR 
+FROM Proyecto
+JOIN Compra ON Proyecto.ID_Proyecto = Compra.ID_Proyecto
+JOIN MaterialConstruccion ON Compra.ID_MaterialConstruccion = MaterialConstruccion.ID_MaterialConstruccion 
+WHERE Pagado = 'No'
+GROUP BY Proyecto.ID_Proyecto
+HAVING SUM(CAntidad * Precio_Unidad)>50000
+--HAVING VALOR>50000 
+ORDER BY VALOR DESC;
+
+//-------------------QUINTO
+SELECT Nombre || " " || Primer_Apellido || " " || Segundo_Apellido AS LIDER, 
+SUM(Cantidad*Precio_Unidad) AS VALOR
+FROM Lider l
+JOIN Proyecto p ON p.ID_Lider = l.ID_Lider 
+JOIN Compra c ON p.ID_Proyecto  = c.ID_Proyecto 
+JOIN MaterialConstruccion mc ON c.ID_MaterialConstruccion = mc.ID_MaterialConstruccion 
+GROUP BY Nombre || " " || Primer_Apellido || " " || Segundo_Apellido 
+ORDER BY VALOR DESC
+LIMIT 10;
