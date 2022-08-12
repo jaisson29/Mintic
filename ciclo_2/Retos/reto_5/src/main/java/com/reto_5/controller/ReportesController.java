@@ -3,34 +3,34 @@ package com.reto_5.controller;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.reto_5.model.dao.ComprasDeLiderDao;
-import com.reto_5.model.dao.DeudasPorProyectoDao;
-import com.reto_5.model.dao.ProyectoBancoDao;
-import com.reto_5.model.vo.ComprasDeLiderVo;
-import com.reto_5.model.vo.DeudasPorProyectoVo;
-import com.reto_5.model.vo.ProyectoBancoVo;
+import com.reto_5.model.dao.ListaLideresDao;
+import com.reto_5.model.dao.ComprasProyectoDao;
+import com.reto_5.model.dao.ProyectosDao;
+import com.reto_5.model.vo.ListaLideresVo;
+import com.reto_5.model.vo.ComprasProyectoVo;
+import com.reto_5.model.vo.ProyectosVo;
 
 public class ReportesController {
-    private ProyectoBancoDao proyectoBancoDao;
-    private ComprasDeLiderDao comprasDeLiderDao;
-    private DeudasPorProyectoDao pagadoPorProyectoDao;
+    private ProyectosDao proyectosDao;
+    private ListaLideresDao listaLideresDao;
+    private ComprasProyectoDao comprasProyectoDao;
 
     public ReportesController(){
-        proyectoBancoDao = new ProyectoBancoDao();
-        comprasDeLiderDao = new ComprasDeLiderDao();
-        pagadoPorProyectoDao = new DeudasPorProyectoDao();
+        proyectosDao = new ProyectosDao();
+        listaLideresDao = new ListaLideresDao();
+        comprasProyectoDao = new ComprasProyectoDao();
     }
 
-    public List<ProyectoBancoVo> listarProyectosPorBanco(String banco) throws SQLException{
-        return proyectoBancoDao.listar(banco);
+    public List<ProyectosVo> listarProyectos() throws SQLException{
+        return proyectosDao.listar();
     }
 
-    public List<DeudasPorProyectoVo> listarTotalAdeudadoProyecto(Double limite) throws SQLException{
-        return pagadoPorProyectoDao.listar(limite);
+    public List<ComprasProyectoVo> listarTotalAdeudadoProyecto() throws SQLException{
+        return comprasProyectoDao.listar();
     }
 
-    public List<ComprasDeLiderVo> listarLideresQueMasGastan() throws SQLException{
-        return comprasDeLiderDao.listar();
+    public List<ListaLideresVo> listarLideres() throws SQLException{
+        return listaLideresDao.listar();
     }
 
 }
