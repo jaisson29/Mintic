@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-16" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Veterinaria</title>
+		<link rel="stylesheet" href="styles/index.css" />
+		<!--Cargar bosstrap desde CDN-->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+			integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+			integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+			crossorigin="anonymous"
+		></script>
+		<!--Fin carga boostrap-->
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">Grupo 24</a>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<!--Opciones de navegacion-->
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="#">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="form.html">Registrar mascota</a>
+							</li>
+						</ul>
+						<!--Fin opciones de navegacion-->
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<br />
+			<h2>Mascotas Registradas</h2>
+			<section id="section-table">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<td>Id</td>
+							<td>Nombre</td>
+							<td>Apellido</td>
+							<td>Tipo mascota</td>
+							<td>Raza</td>
+							<td>Edad</td>
+							<td>Observación</td>
+							<td>Acciones</td>
+						</tr>
+					</thead>
+					<tbody id="tbody"></tbody>
+				</table>
+			</section>
+			<!-- Modal -->
+			<div
+				class="modal fade"
+				id="exampleModal"
+				tabindex="-1"
+				aria-labelledby="exampleModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Eliminar mascota</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							¿Desea eliminar la mascota
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								No
+							</button>
+							<button
+								type="button"
+								class="btn btn-danger"
+								data-bs-dismiss="modal"
+								onclick="delete_mascota()"
+							>
+								Si, deseo eliminarla
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Fin modal-->
+		</main>
+		<footer></footer>
+
+		<script src="scripts/index.js"></script>
+	</body>
+</html>

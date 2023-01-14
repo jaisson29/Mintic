@@ -1,0 +1,34 @@
+
+body {
+	background: aquamarine;
+}
+
+h2 {
+	text-align: center;
+	margin-top: 50px;
+}
+
+/*Estilo para el formulario*/
+#section-form form {
+	width: 350px;
+}
+
+#section-form {
+	/*El grosor y color de la margen
+	border: 2px solid red;
+	*/
+	display: flex;
+	justify-content: center;
+	padding-top: 50px;
+	/*
+	Margen exterior desde el borde de la ventana hasta el borde de la margen
+	margin: 50px;
+	Margen interior desde el borde de la margen hacia adentro segun la catidad de pixeles
+	padding: 20px;
+	*/
+}
+
+#cont-btn {
+	display: flex;
+	justify-content: center;
+}
